@@ -6,6 +6,11 @@ namespace Magepotato\Banners\Model\Source;
 
 class Areas implements \Magento\Framework\Data\OptionSourceInterface
 {
+    /**
+     * @var null|array
+     */
+    protected $options;
+
     public function __construct(
         \Magepotato\Banners\Model\ResourceModel\Area\CollectionFactory $collectionFactory
     ) {
@@ -14,13 +19,8 @@ class Areas implements \Magento\Framework\Data\OptionSourceInterface
 
     public function toOptionArray()
     {
-        // $this->options = ['label' => __('-- Please Select Area --'), 'value' => ''];
-        $collection = $this->collectionFactory->create(); //->toOptionArray();
-        foreach ($this->getAvailableOptions() as $value => $label) {
-            $this->options[] = [
-                'value' => $value,
-                'label' => $label,
-            ];
+        if (null == $this->options) {
+            $this->options = $this->collectionFactory->create()->toOptionArray();
         }
 
         return $this->options;

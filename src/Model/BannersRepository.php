@@ -26,9 +26,9 @@ class BannersRepository implements \Magepotato\Banners\Api\BannersRepositoryInte
         }
         $collection = $this->bannerCollectionFactory->create();
         $collection->getSelect()
-            ->joinLeft(
+            ->joinInner(
                 ['jta' => 'mpotato_banners_area'],
-                "main_table.area_id = jta.entity_id AND jta.title = '{$areaIdentifier}'",
+                "main_table.area_id = jta.entity_id AND jta.identifier = '{$areaIdentifier}'",
                 []
             )
             ->where('main_table.'.BannerInterface::IS_ACTIVE, 1, 'eq')

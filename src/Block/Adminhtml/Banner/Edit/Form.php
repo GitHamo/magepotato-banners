@@ -111,7 +111,6 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Area'),
                 'title' => __('Area'),
                 'required' => true,
-                // 'class' => '',
                 'class' => 'select validate-no-empty no-whitespace',
                 'values' => $this->bannerAreasList->toOptionArray(),
             ]
@@ -156,8 +155,8 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             'text',
             [
                 'name' => BannerInterface::LINK,
-                'label' => __('Link'),
-                'title' => __('Link'),
+                'label' => __('Link / Entity-Identifier'),
+                'title' => __('Link / Entity-Identifier'),
                 'required' => false,
                 'class' => '',
             ]
