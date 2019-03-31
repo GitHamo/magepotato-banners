@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magepotato. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magepotato_Banners::heading" title="Magepotato Banners" module="Magepotato_Banners" sortOrder="25" parent="Magento_Backend::content" resource="Magepotato_Banners::heading" />
+        <add id="Magepotato_Banners::banners" title="Banners" module="Magepotato_Banners" sortOrder="10" parent="Magepotato_Banners::heading" action="mpotato_banners/banner" resource="Magepotato_Banners::banners" />
+        <add id="Magepotato_Banners::areas" title="Areas" module="Magepotato_Banners" sortOrder="20" parent="Magepotato_Banners::heading" action="mpotato_banners/area" resource="Magepotato_Banners::areas" />
+    </menu>
+</config>
