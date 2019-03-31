@@ -19,6 +19,11 @@ class BannersRepository implements \Magepotato\Banners\Api\BannersRepositoryInte
         $this->bannerCollectionFactory = $bannerCollectionFactory;
     }
 
+    public function getByArea(string $areaIdentifier, $storeId = null, $forceReload = false)
+    {
+        return $this->getByAreaIdentifier($areaIdentifier, $storeId, $forceReload)->getItems();
+    }
+
     public function getByAreaIdentifier(string $areaIdentifier, $storeId = null, $forceReload = false)
     {
         if (null === $storeId) {
@@ -35,7 +40,7 @@ class BannersRepository implements \Magepotato\Banners\Api\BannersRepositoryInte
             ->order('main_table.'.BannerInterface::SORT_ORDER, 'ASC');
         $this->filterCollectionByStoreIds($collection, [$storeId]);
 
-        return $collection->getItems();
+        return $collection;
     }
 
     protected function filterCollectionByStoreIds(&$collection, array $storeIds = [])
