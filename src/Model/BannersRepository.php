@@ -19,6 +19,11 @@ class BannersRepository implements \Magepotato\Banners\Api\BannersRepositoryInte
         $this->bannerCollectionFactory = $bannerCollectionFactory;
     }
 
+    public function getByArea(string $areaIdentifier, $storeId = null, $forceReload = false)
+    {
+        return $this->getByAreaIdentifier($areaIdentifier, $storeId, $forceReload)->getItems();
+    }
+
     public function getByAreaIdentifier(string $areaIdentifier, $storeId = null, $forceReload = false)
     {
         if (null === $storeId) {
@@ -26,16 +31,16 @@ class BannersRepository implements \Magepotato\Banners\Api\BannersRepositoryInte
         }
         $collection = $this->bannerCollectionFactory->create();
         $collection->getSelect()
-            ->joinLeft(
+            ->joinInner(
                 ['jta' => 'mpotato_banners_area'],
-                "main_table.area_id = jta.entity_id AND jta.title = '{$areaIdentifier}'",
+                "main_table.area_id = jta.entity_id AND jta.identifier = '{$areaIdentifier}'",
                 []
             )
             ->where('main_table.'.BannerInterface::IS_ACTIVE, 1, 'eq')
             ->order('main_table.'.BannerInterface::SORT_ORDER, 'ASC');
         $this->filterCollectionByStoreIds($collection, [$storeId]);
 
-        return $collection->getItems();
+        return $collection;
     }
 
     protected function filterCollectionByStoreIds(&$collection, array $storeIds = [])

@@ -12,6 +12,12 @@
         </item>
         <item name="spinner" xsi:type="string">magepotato_banners_banner_columns</item>
         <item name="buttons" xsi:type="array">
+            <item name="add_area" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add New Area</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">*/area/new</item>
+            </item>
             <item name="add" xsi:type="array">
                 <item name="name" xsi:type="string">add</item>
                 <item name="label" xsi:type="string" translate="true">Add New Banner</item>

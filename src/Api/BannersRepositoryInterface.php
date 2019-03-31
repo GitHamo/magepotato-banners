@@ -15,5 +15,5 @@ interface BannersRepositoryInterface
      *
      * @return \Magepotato\Banners\Api\Data\BannerInterface[]
      */
-    public function getByAreaIdentifier(string $areaIdentifier, int $storeId = null, bool $forceReload = false);
+    public function getByArea(string $areaIdentifier, int $storeId = null, bool $forceReload = false);
 }

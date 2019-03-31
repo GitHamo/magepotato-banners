@@ -14,4 +14,9 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     {
         $this->_init('Magepotato\Banners\Model\Area', 'Magepotato\Banners\Model\ResourceModel\Area');
     }
+    
+    public function toOptionArray($valueField = null, $labelField = AreaInterface::TITLE, $additional = [])
+    {
+        return $this->_toOptionArray($valueField, $labelField, $additional);
+    }
 }

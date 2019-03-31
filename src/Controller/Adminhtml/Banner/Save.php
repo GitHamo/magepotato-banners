@@ -32,7 +32,7 @@ class Save extends \Magento\Backend\App\Action
                 $model->setAreaId(null);
             }
 
-            if ($data[BannerInterface::STORE_IDS]) {
+            if (isset($data[BannerInterface::STORE_IDS])) {
                 $data[BannerInterface::STORE_IDS] = implode(',', $data[BannerInterface::STORE_IDS]);
             }
 
